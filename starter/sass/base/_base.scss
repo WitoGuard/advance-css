@@ -11,9 +11,32 @@ html {
   /* No. 1 parent element 10px untuk mempermudah perhitungan ketika menggunakan rem (1 rem di kali 10px) daripada menggunakan default size yaitu 16px
   font-size: 10px; */
   /* No. 2 Teknik lebih rinci dibanding mengunakan 10px yaitu dengan menggunakan persentase sehingga lebih dinamis dibrowser (10/16=0.625*100=62.5%) */
-  font-size: 62.5%;
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+  // @include respond(phone) {
+  //   font-size: 50%;
+  // } sama dengan tab-port sehingga tidak perlu dimasukan
+
+  @include respond(tab-land) {
+    //width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16= 56.25%
+  }
+
+  @include respond(tab-port) {
+    //width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16= 50% deklarasi seperti html namun dengan kondisi media query, sehingga style yang pernah kita buat misalnya width atau height dengan rem otomatis terapply
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12px, 12/16 = 75%
+  }
 }
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }
